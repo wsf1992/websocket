@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="send()">点我发送socket消息</button>
+    <script>
+        var ws = new WebSocket("ws://10.0.0.40:8080/sms");
+        ws.onopen = function () {
+            console.log('socket链接已经创建');
+            // ws.send('hello');
+        };
+        ws.onmessage = function (e) {
+            console.log(e)
+            // console.log('client: received %s', e.data);
+        };
+        function send() {
+            ws.send('你好啊');
+        };
+    </script>
+</body>
+
+</html>
